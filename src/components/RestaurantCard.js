@@ -12,7 +12,7 @@ const RestaurantCard = ({ restaurantData }) => {
       <h3>{name}</h3>
       <p>{cuisines.join(", ")}</p>
       <p>{rating} ⭐</p>
-      <p>₹{priceForTwo} for two</p>
+      {/* <p>₹{priceForTwo} for two</p> */}
     </div>
   );
 };
