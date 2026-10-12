@@ -1,13 +1,16 @@
+import { Link } from "react-router";
 import RestaurantCard from "./RestaurantCard";
 
 const RestuarantContainer = ({ restaurantList }) => {
   return (
     <div className="restaurant-container">
-      {restaurantList
-        .filter((restaurant) => restaurant.availability === "open")
-        .map((restaurant) => {
-          return <RestaurantCard key={restaurant.id} restaurantData={restaurant} />;
-        })}
+      {restaurantList.map((restaurant) => {
+        return (
+          <Link key={restaurant.id} to={"/restaurant/" + restaurant.id}>
+            <RestaurantCard  restaurantData={restaurant} />
+          </Link>
+        );
+      })}
     </div>
   );
 };

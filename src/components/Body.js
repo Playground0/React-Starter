@@ -2,18 +2,21 @@ import RestuarantContainer from "./RestuarantContainer";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { API_URL } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filterText, setFilterText] = useState([]);
   const [originalRestaurantList, setOriginalRestaurantList] = useState([]);
 
+  const onlineStatus = useOnlineStatus();
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const response = await fetch(API_URL);
+    const response = await fetch(API_URL + "?limit=12");
 
     const data = await response.json();
 
@@ -32,6 +35,10 @@ const Body = () => {
     setOriginalRestaurantList(mappedRestaurantList);
     setRestaurantList(mappedRestaurantList);
   };
+
+  if(onlineStatus === false){
+    return <h1>You are offline!</h1>
+  }
 
   return restaurantList.length === 0 ? (
     <Shimmer />

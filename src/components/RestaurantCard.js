@@ -1,9 +1,9 @@
 const RestaurantCard = ({ restaurantData }) => {
   
-  const { name, cuisines, rating, priceForTwo, image } = restaurantData;
+  const { name, cuisines, rating, image } = restaurantData;
 
   return (
-    <div className="restaurant-card" onClick={() => console.log('Restaurant clicked:', name)}>
+    <div className="restaurant-card">
       <img
         className="restaurant-image"
         alt="restaurant-image"
